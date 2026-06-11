@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Input and Button</title>
+    </head>
+    <body>
+       <input type="text" id = "inpt"  placeholder="Enter a fruit name">
+       <button id="btn" onclick="additem()">Add</button>
+       <ul id="list"></ul>
+       <script>
+         function additem() {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+            let value=document.getElementById("inpt").value;
+            let li=document.createElement("li");
+            li.innerText=value;
+            document.getElementById("list").append(li);
+        }
+         let button=document.getElementById("btn");
+         button.addEventListener("click",function(){
+            console.log("item added successfully");
+         });
+        
+       </script>
+    </body>
+</html>

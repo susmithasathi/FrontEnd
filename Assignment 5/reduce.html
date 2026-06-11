@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>reduce func</title>
+     </head>
+    <body>
+        <p id="demo"></p>
+   
+    <script>
+       a=[99,2, 92,56,8,29,101,87];
+       let lar=a.reduce((max,element)=>max>element? max:element,0);
+     
+      document.getElementById("demo").innerHTML=lar;
+    </script>
+      </body>    
+      </html>

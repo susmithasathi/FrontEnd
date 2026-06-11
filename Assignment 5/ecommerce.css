@@ -1,0 +1,54 @@
+body{
+      font-family: Arial;
+      background:#f5f5f5;
+       padding: 20px;
+    }
+    h1,h2{
+        text-align: center;
+     }
+    #idproducts{
+    display: flex;
+    gap:20px;
+    
+    justify-content: center;
+
+    }
+    .card{
+     background: white;
+     width: 220px;
+     padding: 15px;
+     border-radius: 10px;
+     box-shadow: 0 0 5px gray;
+     text-align: center;
+     }
+     .card img{
+      width:100%;
+      height:180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+     button{
+    padding: 10px;
+    margin-top: 10px;
+    width:100%;
+    cursor:pointer
+    }
+    #total{
+      text-align: center;
+      margin-top: 20px;
+      font-size: 22px;
+    }
+    #cartitems{
+      display: flex;
+    gap:20px;
+    
+    justify-content: center;
+
+    }
+    .cardfeatured{
+      border:3px solid green;
+      text-align: center;
+      top:2px
+    }
+    
+    

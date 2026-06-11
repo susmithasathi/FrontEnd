@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>E-Commerce Products</title>
+        
+        <link rel="stylesheet" href="ecommerce.css">
+        
+    </head>
+    <body>
+        <h1>E-Commerce Products</h1>
+        <div id="idproducts"></div> 
+        <h2>Cart Items</h2>'
+        <div id="cartitems"></div>
+        <h2 id="total">Total:₹0</h2>
+      <script>
+        const products=[
+            {
+                id:1,
+                name:"mobile",
+                price:20000,
+                image:"mobile.jpg"
+            },
+            
+            {
+                id:2,
+                name:"Laptop",
+                price:50000,
+                image:"laptop.jpg"
+            },
+            {
+                id:3,
+                name:"Headphones",
+                price:3000,
+                image:"Headphones.jpg"
+            },
+
+        ];
+        let cart=[];
+        function displayProducts(){
+            const productContainer=document.getElementById("idproducts");
+            products.forEach(function(product){
+                productContainer.innerHTML+=`
+                <div class="card">
+                    <img src="${product.image}" alt=${product.name}">
+                    <h2>${product.name}</h2>
+                    <p>₹${product.price}</p>
+             <button onclick="addToCart(${product.id})">Add To Cart</button>
+                
+                `
+            });
+        }
+         displayProducts();   
+         //rest operator in function parameter
+         function addToCart(...ids){
+            ids.forEach(function(id){
+            const a=products.find(function(item){
+                return item.id===id;
+            });
+            cart.push(a);
+        });
+            showCart();
+         }
+         function showCart(){
+            const cartContainer=document.getElementById("cartitems");
+            cartContainer.innerHTML=""; 
+            [featureditem,...otheritems]=cart;                                                        
+            let total=0;
+            if(featureditem){
+              total+=featureditem.price;
+                cartContainer.innerHTML+=`
+                <h2>Featured Product</h2>
+                <div class="cardfeatured">
+                    <img src="${featureditem.image}" alt="${featureditem.name}">
+                    <h2>${featureditem.name}</h2>
+                    <p>₹${featureditem.price}</p>
+              <button onclick="removeFromCart(0)">
+                Remove
+                </button>
+                </div>
+                `;
+                      
+            }
+            otheritems.forEach(function(item,index){
+                total+=item.price;
+                cartContainer.innerHTML+=`
+                <div class="card">
+                 <img src="${item.image}">
+                 <h3>${item.name}</h3>
+                 <p>₹${item.price}</p>
+                 <button onclick="removeFromCart(${index+1})">
+                    Remove
+                    </button>
+                    </div>
+                    `;
+
+            });
+            document.getElementById("total").innerText=
+            "Total:₹"+total;
+         }
+         function removeFromCart(index){
+            cart.splice(index,1);
+            showCart();
+         }
+      </script>  
+    </body>  
+    </html>  

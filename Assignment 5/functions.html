@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Filter,Find,Every</h1>
+        <p id="trail"></p>
+        <p id="trail1"></p>
+        <p id="trail2"></p>
+    <script>
+        function checklength(item){
+            return item.length >5;
+        }
+        function findword(item){
+            return item.startsWith("b");
+        }
+        function wordswith(item){
+            return item.includes("a");
+        }
+       
+        let sentence="This is a Practice sentence because it is trail ";
+        let a=sentence.split(" ");
+        let arr=a.filter(checklength);
+        let arr1=a.find(findword);
+        let arr2=a.every(wordswith);
+        document.getElementById("trail").innerHTML=arr;
+        document.getElementById("trail1").innerHTML=arr1;
+        document.getElementById("trail2").innerHTML=arr2;
+        
+        
+
+    </script> 
+        
+    </body>    
+    </html>

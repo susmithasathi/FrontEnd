@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>closure</head>
+    <body>
+        <p id="demo"></p>
+        <script>
+            function outer(a){
+                function inner(b){
+                    return a+b;
+                }
+               return inner; 
+            }
+            let add=outer(10);
+            a=add(20);
+            document.getElementById("demo").innerHTML=a;
+
+        </script>
+    </body>
+</html>

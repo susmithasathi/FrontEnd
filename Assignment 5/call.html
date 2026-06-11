@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Call and Onclick</title>
+        
+    </head>
+    <body>
+        <button id="btn" onclick="showDetails()">Add Statement</button>
+        <div id="demo"></div>
+     <script>
+        function Introduce(city,country){
+            let message=this.name + " lives in " +city+ ","+country;
+            return message;
+        }
+        let person1={
+            name:"susmitha"
+        };
+        function showDetails(){
+            let result=Introduce.call(person1,"Kakinada","India");
+            document.getElementById("demo").innerHTML+=result+"<br>";
+        }
+        
+        
+     </script>   
+     </body>
+</html>     

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arrow Function</title>
+    </head>
+    <body>
+        <p id="demo"></p>
+        <script>
+            let person={
+                name:"susmitha",
+                age: 22,
+
+            normalFunction : function(){
+                let arrowFunction=()=>{
+                    return this.name+ " "+this.age;
+                    
+                }
+              return arrowFunction();
+            }  
+             };
+             let a=person.normalFunction();
+             document.getElementById("demo").innerHTML= a;
+        </script>
+    </body>
+</html>

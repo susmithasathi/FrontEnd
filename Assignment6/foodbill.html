@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>total bill</title>
+</head>
+<body>
+    <h1>Total Bill</h1>
+    <input type="number" id="price" placeholder="Enter item price">
+    <button onclick="addItem()">Add Item</button>
+    <button onclick="calculateTotal(...totalprices)">Calculate Total</button>
+    <p id="items">Item prices:  </p>
+    <p id="total">Total:₹ </p>
+    <script>
+        let totalprices=[];
+        function addItem(){
+            const priceInput=document.getElementById("price");
+            const price=Number(priceInput.value);
+            totalprices.push(price);
+            document.getElementById("items").innerText ="Item prices: "+ totalprices+", ";
+            priceInput.value="";
+        }
+        function calculateTotal(...prices){
+            let total=0;
+            prices.forEach(function(price){
+                total+=price;
+            });
+            document.getElementById("total").innerText ="Total: ₹"+total;
+        }
+    </script>
+    
+</body>
+</html>

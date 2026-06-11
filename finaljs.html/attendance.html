@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Attendance</title>
+        <link rel="stylesheet" href="attendance.css"></link>
+    </head>
+    <body>
+        <h2>Take Attendance</h2>
+        <div id="attendanceContainer"></div>
+        <button id="savebtn">SAVE</button>
+        <script>
+            const container=document.getElementById("attendanceContainer");
+            fetch("students.json")
+            .then(response=>response.json())
+            .then(students=>{
+                 students.forEach(student=>{
+                    const row=document.createElement("div");
+                    row.classList.add("student-row");
+                    row.innerHTML=`
+                    <span>${student.name}</span>
+                    <select data-id="${student.id}">
+                     <option  value="Present">
+                        Present
+                        </option>
+                         <option  value="Absent">
+                       Absent
+                        </option>
+                        </select>
+
+                    `;
+                    container.appendChild(row);
+                 });
+            });
+            document
+            .getElementById("savebtn")
+            .addEventListener("click",()=>{
+                const attendance={};
+                const dropdowns=document.querySelectorAll("select");
+                dropdowns.forEach(dropdown=>{
+                    const id=dropdown.dataset.id;
+                    attendance[id]=dropdown.value;
+                });
+                console.log(attendance);
+                localStorage.setItem(
+                    "attendance",
+                    JSON.stringify(attendance)
+                );
+                alert("Attendance Saved")
+            });
+
+        </script>
+    </body>
+</html>

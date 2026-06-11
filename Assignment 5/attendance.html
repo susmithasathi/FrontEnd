@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0"/>
+
+  <title>Attendance</title>
+
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div id="attendancePage"></div>
+
+<script>
+
+const attendancePage =
+document.getElementById("attendancePage");
+
+
+// LOAD ATTENDANCE PAGE
+function loadAttendance(){
+
+    let students =
+    JSON.parse(localStorage.getItem("students")) || [];
+
+    renderAttendance(students);
+}
+
+
+// RENDER ATTENDANCE
+function renderAttendance(students){
+
+attendancePage.innerHTML = `
+
+<div class="attendance-container">
+
+    <div class="topbar">
+
+        <h2>Take Attendance</h2>
+
+        <button id="backBtn">
+            Back To Dashboard
+        </button>
+
+    </div>
+
+
+    ${students.map(student => `
+
+    <div class="attendance-card">
+
+        <div class="attendance-info">
+
+            <h3>${student.name}</h3>
+
+            <p>${student.course}</p>
+
+        </div>
+
+
+        <div class="attendance-select">
+
+            <select
+                class="attendanceDropdown"
+                data-id="${student.id}"
+            >
+
+                <option value=""
+                ${
+                    student.attendance === ""
+                    ? "selected"
+                    : ""
+                }>
+                    Select
+                </option>
+
+
+                <option value="Present"
+                ${
+                    student.attendance === "Present"
+                    ? "selected"
+                    : ""
+                }>
+                    Present
+                </option>
+
+
+                <option value="Absent"
+                ${
+                    student.attendance === "Absent"
+                    ? "selected"
+                    : ""
+                }>
+                    Absent
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    `).join("")}
+
+</div>
+`;
+
+
+// BACK BUTTON
+document.getElementById("backBtn")
+.addEventListener("click", () => {
+
+    window.location.href =
+    "dashboard.html";
+});
+
+
+// DROPDOWN CHANGE
+document
+.querySelectorAll(".attendanceDropdown")
+.forEach(dropdown => {
+
+    dropdown.addEventListener("change", (e) => {
+
+        const studentId =
+        Number(e.target.dataset.id);
+
+        const attendanceValue =
+        e.target.value;
+
+        updateAttendance(
+            studentId,
+            attendanceValue
+        );
+    });
+});
+
+}
+
+
+// UPDATE ATTENDANCE
+function updateAttendance(id, status){
+
+    let students =
+    JSON.parse(localStorage.getItem("students")) || [];
+
+    // OVERWRITE UPDATED ARRAY
+    students = students.map(student => {
+
+        if(student.id === id){
+
+            return {
+
+                ...student,
+
+                attendance: status
+            };
+        }
+
+        return student;
+    });
+
+
+    // OVERWRITE LOCAL STORAGE
+    localStorage.setItem(
+        "students",
+        JSON.stringify(students)
+    );
+
+
+    console.log(
+        "Attendance Updated Successfully"
+    );
+
+    console.log(students);
+}
+
+
+// INITIAL LOAD
+loadAttendance();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="dashboard.css">
+  </head>
+   <body>
+    <nav class="navbar">
+      <div class="left">
+        <h2>Dashboard</h2>
+      </div>
+      <div class="right">
+        <button id="themebtn">🌙</button>
+        <button id="attendanceBtn">Take Attendance</button>
+        <span id="username"></span>
+      </div>
+    </nav>
+    <div class="cards-container">
+      <div class="card">
+        <h3>Total</h3>
+        <p id="totalcount"></p>
+      </div>
+      <div class="card">
+        <h3>Present</h3>
+        <p id="presentcount"></p>
+      </div>
+      <div class="card">
+        <h3>Absent</h3>
+        <p id="absentcount"></p>
+      </div>
+    </div>
+    <section class="student-section">
+      <h2>Student Details</h2>
+      <div id="studentContainer"></div>
+      <div id="detailsBox">
+        <h3>Student Information</h3>
+        <p>Select a student card</p>
+      </div>
+    </section>
+    <script>
+
+      username=localStorage.getItem('username');
+      document.getElementById("username").innerHTML=username;
+      fetch("students.json")
+      .then(response=>response.json())
+      .then(students=>{
+        const total=students.length;
+        const attendance=JSON.parse(localStorage.getItem("attendance"))||
+        {};
+        let Present=0;
+        for(let id in attendance){
+          if(attendance[id]==="Present"){
+            Present++;
+          }
+        }
+        const Absent=total-Present;
+        document.getElementById("totalcount").innerText=total;
+        document.getElementById("presentcount").innerText=Present;
+        document.getElementById("absentcount").innerText=Absent;
+        
+      });
+      const themebtn=document.getElementById("themebtn");
+      const savedTheme=localStorage.getItem("theme");
+      //when the page reloads the local storage remembers that
+      if(savedTheme=="dark"){
+        document.body.classList.add("dark-mode");
+        themebtn.innerText="☀️";
+      }
+      themebtn.addEventListener("click",()=>{
+        document.body.classList.toggle("dark-mode");
+        if(document.body.classList.contains("dark-mode")){
+          localStorage.setItem("theme","dark");
+          themebtn.innerText="☀️";
+        }else{
+          localStorage.setItem("theme","light");
+          themebtn.innerText="🌙";
+        } 
+        
+      });
+      const attendanceBtn=document.getElementById("attendanceBtn")
+      attendanceBtn.addEventListener("click",() =>{
+        window.location.href="attendance.html";
+      });
+      fetch("students.json")
+      .then(response=>response.json())  
+      .then(students=>{
+        const container=document.getElementById("studentContainer");
+        students.forEach(student=>{
+          const card=document.createElement("div");
+          card.classList.add("student-card");
+          card.innerHTML=`
+          <h3>${student.name}</h3>
+            `;
+            
+            card.addEventListener("click",()=>{
+              const detailsBox=document.getElementById("detailsBox");
+              if(detailsBox.dataset.student==student.id){
+                detailsBox.innerHTML=`
+                <h3>Student Information</h3>
+                `;
+                detailsBox.dataset.student="";
+              }
+              else{
+               detailsBox.innerHTML = `
+
+                <h3>Student Information</h3>
+
+                <p><b>Name:</b> ${student.name}</p>
+
+               <p><b>Phone:</b> ${student.phone}</p>
+
+               <p><b>Email:</b> ${student.mail}</p>
+
+               <p><b>Roll:</b> ${student.roll}</p>
+
+              <p><b>Course:</b> ${student.course}</p>
+
+    `;
+    detailsBox
+.dataset.student=student.id;
+              }
+});
+            container.appendChild(card);
+        });
+      });
+    </script>
+   </body>
+</html>

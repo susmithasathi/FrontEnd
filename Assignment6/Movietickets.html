@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="movietickets.css">
+    </head>
+    <body>
+        <h1>Movie Ticket Booking</h1>
+        <div id="Tickets"></div>
+        <div id="LatestNotifications"></div>
+        <script>
+            const tickets=[
+                {
+                    id:1,
+                    Name:"Avengers"
+                },
+                {
+                    id:2,
+                    Name:"Batman"
+                },
+                {
+                    id:3,
+                    Name:"Hi Nanna" 
+                },   
+    
+                    
+            ];
+            let notifications=[];
+            function displayTickets(){
+                const cardcontainer=document.getElementById("Tickets");
+                tickets.forEach(function(item){
+                     cardcontainer.innerHTML+=`
+                     <div class="card">
+                      <h2>${item.Name}</h2>
+                      <button onclick="addtickets(${item.id})">Book Now</Button>
+                 `
+                });
+            }
+            displayTickets();
+            function addtickets(...items){
+                items.forEach(function(item){
+                    const a=tickets.find(function(b){
+                        return b.id===item;
+                    })
+                    notifications.unshift(a);
+                });
+               showNotifications();
+                
+            }
+            function showNotifications(){
+                const notificationContainer=document.getElementById("LatestNotifications");
+                notificationContainer.innerHTML="";
+                [latest,...other]=notifications;
+                if(latest){
+                notificationContainer.innerHTML+=`
+                <h1>Notifications</h1>
+                <div class=featuredcard>
+                    
+                    <h2>${latest.Name}</h2>
+                    <button class="booked">Booked</button>
+                    
+                    
+                    </div>
+              `; 
+            }
+                other.forEach(function(id){
+                notificationContainer.innerHTML+=`
+                <div class=normalcard>
+                  
+                    <h2>${id.Name}</h2>
+                    <button class="booked">Booked</button>
+                    
+                    
+                    
+                    </div>
+              `; 
+
+                });
+            
+        }
+
+        </script>
+        </body>
+        </html>

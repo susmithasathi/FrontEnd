@@ -1,0 +1,50 @@
+.mainbox{
+    background-color: blue;
+    display: flex;
+    border: 1px solid brown;
+}
+.boxA{
+   
+    background-color: aqua;
+    width:30%;
+    height :auto;
+}
+.boxB{
+    background-color: blanchedalmond;
+    width:69%;
+    height:200px;
+   
+}
+.B1{
+    background-color: beige;
+    height: 100px;
+    display: flex;
+     
+     justify-content: space-evenly;
+    
+     padding: 20px 10px;
+    
+    
+}
+
+.B2{
+    background-color: orchid;
+    height: 60px ;
+     
+    
+}
+.B11{
+    background-color: orange;
+     width: 23%;
+
+   
+   
+}
+.B12{
+    background-color: goldenrod;
+    width: 23%;
+}
+.B13{
+    background-color: greenyellow;
+    width: 23%;
+}

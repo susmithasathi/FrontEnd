@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prototype Example</title>
+    <link rel="stylesheet" href="prototype.css">
+</head>
+
+<body>
+
+    <h1>Prototype and __proto__ Example</h1>
+
+    <div id="students">
+
+        <div class="card" id="card1">
+            <h2 id="title1"></h2>
+
+            <button id="login1">Login</button>
+            <button id="lecture1">Watch Lecture</button>
+            <br>
+
+            <button id="assignment1">Submit Assignment</button>
+            <br>
+
+            <button id="certificate1">Download Certificate</button>
+
+            <div class="output" id="output1"></div>
+        </div>
+
+
+
+        <div class="card" id="card2">
+            <h2 id="title2"></h2>
+
+            <button id="login2">Login</button>
+            <button id="lecture2">Watch Lecture</button>
+            <br>
+
+            <button id="assignment2">Submit Assignment</button>
+            <br>
+
+            <button id="certificate2">Download Certificate</button>
+
+            <div class="output" id="output2"></div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        // Constructor Function
+
+        function Student(name, course){
+            this.name = name;
+            this.course = course;
+        }
+
+
+
+        // Prototype Methods
+
+        Student.prototype.login = function(){
+            return this.name + " logged in";
+        };
+
+        Student.prototype.watchLecture = function(){
+            return this.name + " is watching lecture";
+        };
+
+        Student.prototype.submitAssignment = function(){
+            return this.name + " submitted assignment";
+        };
+
+        Student.prototype.downloadCertificate = function(){
+            return this.name + " downloaded certificate";
+        };
+
+
+
+        // Objects
+
+        const s1 = new Student("Rahul", "JavaScript");
+        const s2 = new Student("Priya", "React");
+
+
+
+        // Titles
+
+        document.getElementById("title1").innerText =
+            s1.name + " - " + s1.course;
+
+        document.getElementById("title2").innerText =
+            s2.name + " - " + s2.course;
+
+
+
+        // Rahul Buttons
+
+        document.getElementById("login1").onclick = function(){
+            document.getElementById("output1").innerText = s1.login();
+        };
+
+        document.getElementById("lecture1").onclick = function(){
+            document.getElementById("output1").innerText = s1.watchLecture();
+        };
+
+        document.getElementById("assignment1").onclick = function(){
+            document.getElementById("output1").innerText =
+                s1.submitAssignment();
+        };
+
+        document.getElementById("certificate1").onclick = function(){
+            document.getElementById("output1").innerText =
+                s1.downloadCertificate();
+        };
+
+
+
+        // Priya Buttons
+
+        document.getElementById("login2").onclick = function(){
+            document.getElementById("output2").innerText = s2.login();
+        };
+
+        document.getElementById("lecture2").onclick = function(){
+            document.getElementById("output2").innerText = s2.watchLecture();
+        };
+
+        document.getElementById("assignment2").onclick = function(){
+            document.getElementById("output2").innerText =
+                s2.submitAssignment();
+        };
+
+        document.getElementById("certificate2").onclick = function(){
+            document.getElementById("output2").innerText =
+                s2.downloadCertificate();
+        };
+
+
+
+        // __proto__
+
+        console.log(s1.__proto__);
+        console.log(s1.__proto__ === Student.prototype);
+
+    </script>
+
+</body>
+</html>

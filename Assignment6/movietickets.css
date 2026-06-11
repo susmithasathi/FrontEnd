@@ -1,0 +1,43 @@
+h1{
+    text-align: center;
+}
+#Tickets{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    align-items: center;
+   
+}
+.card{
+  border-radius: 10px;
+  width:220px;
+  text-align: center;
+  padding: 5px;
+  box-shadow: 0 0 5px gray;
+}
+.featuredcard{
+  border-radius: 10px;
+  width:220px;
+  text-align: center;
+  padding: 5px;
+  box-shadow: 0 0 5px gray;
+  background-color: green;
+  
+}
+.booked{
+    background-color: aquamarine;
+}
+#LatestNotifications{
+   align-items: center;
+   display:flex;
+   flex-direction: column;
+   margin-top:25px;
+   gap: 20px;
+}
+.normalcard{
+  border-radius: 10px;
+  width:220px;
+  text-align: center;
+  padding: 5px;
+  box-shadow: 0 0 5px gray;
+}

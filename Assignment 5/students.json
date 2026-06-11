@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Meher",
+    "course": "BTech",
+    "phone": "9492773995",
+    "roll": "101",
+    "mail": "meher@gmail.com",
+    "attendance": "Present"
+  },
+  {
+    "id": 2,
+    "name": "Priya",
+    "course": "BCA",
+    "phone": "9999999999",
+    "roll": "102",
+    "mail": "priya@gmail.com",
+    "attendance": "Absent"
+  },
+  {
+    "id": 3,
+    "name": "Sarkar",
+    "course": "MCA",
+    "phone": "8888888888",
+    "roll": "103",
+    "mail": "sarkar@gmail.com",
+    "attendance": "Present"
+  },
+  {
+    "id": 4,
+    "name": "Viraj",
+    "course": "BSc",
+    "phone": "7777777777",
+    "roll": "104",
+    "mail": "viraj@gmail.com",
+    "attendance": "Absent"
+  },
+  {
+    "id": 5,
+    "name": "Yashna",
+    "course": "MBA",
+    "phone": "6666666666",
+    "roll": "105",
+    "mail": "yashna@gmail.com",
+    "attendance": "Present"
+  }
+]

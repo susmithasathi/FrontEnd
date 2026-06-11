@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Java Script Arrays</h1>
+        <p id="demo"></p>
+        <p id="demo1"></p>
+        <p id="demo2"></p>
+        <p id="demo3"></p>
+        
+    <script>
+        let text="This project belongs to Susmitha";
+        let arr=text.split(" ");
+        arr.splice(1,0,"JavaScript");
+        result=arr.join(" ");
+
+        let arr1=result.split(" ");
+        let a=arr1.toReversed();
+        result1=a.join(" ");
+
+        let arr2=result.split(" ");
+        let b=arr2.shift();
+        result2=arr2.join(" ");
+
+        const arr3=result.split(" ");
+        arr3.push("Sathi");
+        result3=arr3.join(" ");
+    
+        
+        document.getElementById("demo").innerHTML=result;
+        document.getElementById("demo1").innerHTML= result1;
+        document.getElementById("demo2").innerHTML= result2;
+        document.getElementById("demo3").innerHTML= result3;
+
+
+    </script>    
+    </body>
+</html>

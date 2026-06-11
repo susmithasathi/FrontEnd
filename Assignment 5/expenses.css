@@ -1,0 +1,76 @@
+body{
+  font-family: Arial;
+  background: bisque;
+  padding:20px;
+}
+
+h1{
+  text-align:center;
+}
+
+.dashboard{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  margin-bottom:20px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  width:200px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 0 5px gray;
+}
+
+.form-section{
+  background:white;
+  display: flex;
+  flex-direction: column;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:10px;
+
+}
+#addBtn
+{
+  background-color: rgb(217, 79, 79);
+  color: black;
+  border:none;
+  border-radius:10px;
+}
+.filter{
+  margin-bottom: 20px;
+  width: auto;
+}
+
+input,select,button{
+  padding:10px;
+  margin:5px;
+
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,td{
+  border:1px solid #ddd;
+  padding:10px;
+  text-align:center;
+}
+
+th{
+  background:#333;
+  color:white;
+}
+
+.delete-btn{
+  background:red;
+  color:white;
+  border:none;
+  cursor:pointer;
+}

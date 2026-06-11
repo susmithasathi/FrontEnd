@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .container{
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+        }
+
+        .container div{
+            border:2px solid black;
+            border-radius:15px;
+            padding:20px;
+            width:300px;
+            background:white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container"></div>
+
+    <script>
+
+        let person1 = {
+            Name:"Meher",
+            Age:22,
+            Profession:"Full Stack Developer"
+        };
+
+        let person2 = {
+            Name:"Susmitha",
+            Age:23,
+            Profession:"Front-end Developer"
+        };
+
+        document.querySelector('.container').innerHTML = `
+
+            <div>
+                <h2>Name:</h2><p>${person1.Name}</p>
+                <h2>Age:</h2><p>${person1.Age}</p>
+                <h2>Profession:</h2><p>${person1.Profession}</p>
+            </div>
+
+            <div>
+                <h2>Name:</h2><p>${person2.Name}</p>
+                <h2>Age:</h2><p>${person2.Age}</p>
+                <h2>Profession:</h2><p>${person2.Profession}</p>
+            </div>
+
+        `;
+
+    </script>
+
+</body>
+
+</html>
