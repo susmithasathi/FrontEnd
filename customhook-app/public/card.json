@@ -1,0 +1,78 @@
+[
+    {
+        "name" : "phone",
+        "peice" : 25000
+    },
+    {
+        "name" : "laptop",
+        "peice" : 50000
+    },
+    {
+        "name" : "watch",
+        "peice" : 15000
+    },
+    {
+        "name" : "headphone",
+        "peice" : 10000
+    },
+    {
+        "name" : "camera",
+        "peice" : 30000
+    },  
+    {
+        "name" : "tablet",
+        "peice" : 20000
+    },
+    {
+        "name" : "printer",
+        "peice" : 40000
+    },
+    {
+        "name" : "monitor",
+        "peice" : 35000
+    },
+    {
+        "name" : "keyboard",
+        "peice" : 5000
+    },
+    {
+        "name" : "mouse",
+        "peice" : 3000
+    },
+    {
+        "name" : "speaker",
+        "peice" : 8000
+    },
+    {
+        "name" : "router",
+        "peice" : 6000
+    },
+    {
+        "name" : "external hard drive",
+        "peice" : 12000
+    },
+    {
+        "name" : "usb flash drive",
+        "peice" : 2000
+    },
+    {
+        "name" : "webcam",
+        "peice" : 7000
+    },
+    {
+        "name" : "microphone",
+        "peice" : 9000
+    },
+    {
+        "name" : "gaming console",
+        "peice" : 45000
+    },
+    {
+        "name" : "smartwatch",
+        "peice" : 18000
+    },
+    {
+        "name" : "fitness tracker",
+        "peice" : 12000
+    }
+]

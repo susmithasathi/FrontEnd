@@ -1,0 +1,189 @@
+React Component Lifecycle
+1. Mounting
+Mounting is when a component is created and displayed on the screen for the first time.
+Example:
+ Opening a website and seeing the Home component appear.
+Component created → Rendered → Visible on screen
+
+2. Updating
+Updating happens when the component re-renders because its state or props change.
+Example:
+ Clicking a counter button:
+0 → 1 → 2 → 3
+Each change causes the component to update.
+
+3. Unmounting
+Unmounting is when a component is removed from the screen.
+Example:
+ Navigating from Home page to About page removes the Home component.
+Component removed → Cleanup happens
+
+Simple Flow
+Mounting  →  Updating  →  Unmounting
+
+
+
+
+1. Mounting
+Functional Component
+import { useEffect } from "react";
+
+function App() {
+ useEffect(() => {
+   console.log("Component Mounted");
+ }, []);
+
+ return <h1>Home Page</h1>;
+}
+Output when component loads:
+Component Mounted
+
+Class Component
+import React, { Component } from "react";
+
+class App extends Component {
+ componentDidMount() {
+   console.log("Component Mounted");
+ }
+
+ render() {
+   return <h1>Home Page</h1>;
+ }
+}
+
+export default App;
+
+2. Updating
+Functional Component
+import { useState, useEffect } from "react";
+
+function App() {
+ const [count, setCount] = useState(0);
+
+ useEffect(() => {
+   console.log("Component Updated");
+ }, [count]);
+
+ return (
+   <>
+     <h1>{count}</h1>
+
+     <button onClick={() => setCount(count + 1)}>
+       Increment
+     </button>
+   </>
+ );
+}
+Every click:
+0 → 1 → 2
+Component Updated
+
+Class Component
+import React, { Component } from "react";
+
+class App extends Component {
+ state = {
+   count: 0,
+ };
+
+ componentDidUpdate() {
+   console.log("Component Updated");
+ }
+
+ render() {
+   return (
+     <>
+       <h1>{this.state.count}</h1>
+
+       <button
+         onClick={() =>
+           this.setState({
+             count: this.state.count + 1,
+           })
+         }
+       >
+         Increment
+       </button>
+     </>
+   );
+ }
+}
+
+export default App;
+
+3. Unmounting
+Functional Component
+import { useState, useEffect } from "react";
+
+function Child() {
+ useEffect(() => {
+   return () => {
+     console.log("Component Unmounted");
+   };
+ }, []);
+
+ return <h2>Child Component</h2>;
+}
+
+function App() {
+ const [show, setShow] = useState(true);
+
+ return (
+   <>
+     <button onClick={() => setShow(false)}>
+       Remove Component
+     </button>
+
+     {show && <Child />}
+   </>
+ );
+}
+When the button is clicked:
+Component Unmounted
+
+Class Component
+import React, { Component } from "react";
+
+class Child extends Component {
+ componentWillUnmount() {
+   console.log("Component Unmounted");
+ }
+
+ render() {
+   return <h2>Child Component</h2>;
+ }
+}
+
+class App extends Component {
+ state = {
+   show: true,
+ };
+
+ render() {
+   return (
+     <>
+       <button
+         onClick={() =>
+           this.setState({ show: false })
+         }
+       >
+         Remove Component
+       </button>
+
+       {this.state.show && <Child />}
+     </>
+   );
+ }
+}
+
+export default App;
+
+Lifecycle Mapping
+Functional Component
+Class Component
+useEffect(() => {}, [])
+componentDidMount()
+useEffect(() => {}, [dependency])
+componentDidUpdate()
+return () => {} inside useEffect()
+componentWillUnmount()

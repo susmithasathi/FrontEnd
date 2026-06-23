@@ -1,0 +1,102 @@
+1. Browser Router 
+What is it?
+Uses normal URLs and browser history to navigate between pages.
+Example URL
+/
+/about
+/contact
+Example
+<BrowserRouter>
+ <Routes>
+   <Route path="/" element={<Home />} />
+   <Route path="/about" element={<About />} />
+ </Routes>
+</BrowserRouter>
+Meaning
+/        → Home Component
+/about   → About Component
+
+Meaning
+Useful when server configuration is not available.
+
+2. Nested Routing
+What is it?
+A route inside another route.
+Example URL
+/dashboard/profile
+/dashboard/settings
+Example
+<Route path="/dashboard" element={<Dashboard />}>
+ 	<Route path="profile" element={<Profile />} />
+ <Route path="settings" element={<Settings />} />
+</Route>
+Meaning
+Dashboard
+  ├── Profile
+  └── Settings
+Useful for Admin Panels and Dashboards.
+
+3. Dynamic Routing
+What is it?
+Routes whose values change dynamically.
+Example URL
+/product/101
+/product/205
+Example
+<Route path="/product/:id" element={<Product />} />
+Inside Product component:
+const { id } = useParams();
+Meaning
+/product/101 → id = 101
+/product/205 → id = 205
+Useful for:
+Product pages
+User profiles
+Blog posts
+
+4. Protected Routing
+What is it?
+Restricts access to certain pages unless the user is logged in.
+Example
+{
+ isLoggedIn
+   ? <Dashboard />
+   : <Login />
+}
+Meaning
+Logged In    → Dashboard
+Not Logged In → Login
+Useful for:
+Banking apps
+E-commerce websites
+Admin panels
+
+5. Programmatic Routing
+What is it?
+Navigation using JavaScript instead of clicking links.
+Example
+const navigate = useNavigate();
+
+navigate("/home");
+Meaning
+After login:
+Login Successful
+     ↓
+Automatically go to Home Page
+Useful for:
+Login pages
+Form submissions
+Checkout success pages
+
+6. Lazy Loading Routing
+What is it?
+Loads components only when needed.
+Example
+const About =React.lazy(() = >
+ import("./About")
+);
+Meaning
+Instead of loading all pages initially:
+Load Home first
+Load About only when user visits About
+Improves performance.
